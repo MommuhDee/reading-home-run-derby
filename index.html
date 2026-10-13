@@ -87,11 +87,11 @@ header p{color:#fff6d5!important;font-weight:700}
 .allstarTile strong{display:block;font-size:1.2rem;color:#153d79}
 #awardsPanel{background:#fff9e9;border:2px solid #ffce73;border-radius:13px;padding:10px;margin-top:10px}
 #endPanel{background:linear-gradient(135deg,#fff4b7,#d6f9ff);border:3px solid #f8ba44;border-radius:16px;padding:14px;margin:12px 0;text-align:center}
-.player .badgeText{display:block;font-size:.73rem;color:#6549a1;font-weight:800;margin-top:3px}
+.player .badgeText{display:none} #awardsPanel summary{cursor:pointer;font-weight:800} #awardList{font-size:.86rem;line-height:1.65;margin-top:9px} #badgePop{position:fixed;left:50%;top:23%;transform:translateX(-50%);z-index:1002;max-width:90vw;width:300px;text-align:center;background:linear-gradient(135deg,#fff4a9,#ffcbeb,#c7f6ff);border:4px solid #ffc83d;border-radius:24px;box-shadow:0 12px 36px #27365177;padding:22px 14px;font-size:1.4rem;font-weight:900;animation:badgeBounce .6s ease-out} #badgePop[hidden]{display:none}@keyframes badgeBounce{0%{transform:translate(-50%,-35px) scale(.5);opacity:0}65%{transform:translate(-50%,0) scale(1.1)}100%{transform:translate(-50%,0) scale(1);opacity:1}}
 #pauseBanner{background:#fff1ae;border:2px solid #dc9b24;border-radius:12px;padding:12px;text-align:center;font-weight:850;margin:10px 0}
-</style></head><body><header><h1>⚾ Reading Home Run Derby</h1><p style="font-size:12px;opacity:.85">Version 4.1 — All-Star Edition</p><p>Read it • Hit it • Run the bases!</p></header><main class="wrap">
-<section class="card scoreCard"><div class="row"><h2>Players & score</h2><span class="pill">Auto-saved on this device</span></div><p class="muted">Choose Family Practice for up to six readers, or Two-Team Competition for up to six readers on each team. You can switch modes in Parent settings.</p><div id="allstarScoreboard" class="allstarGrid" aria-live="polite"></div><div id="teamScores" class="teamScores"></div><div class="players" id="players"></div><div id="awardsPanel"><strong>🏅 Reading All-Stars</strong><div id="awardList"></div></div><div id="playerLookup" class="lookup" role="status" aria-live="polite">Tap a player’s name to check their position.</div><p class="muted" id="inning"></p><div id="toast" class="toast" role="status"></div><div id="endPanel" hidden role="status"></div></section>
-<section class="card"><div class="row"><h2>At bat: <span id="batter"></span></h2><span class="pill" id="league"></span></div><p class="muted">Choose a baseball hit and read the challenge. Sounding out carefully or self-correcting counts!</p><div id="pauseBanner" hidden>⏸ Game paused — tap Resume Game to continue.</div><div class="choices" id="choices"><button data-hit="1">Single · Word</button><button data-hit="2">Double · Challenge</button><button data-hit="3">Triple · Sentence</button><button data-hit="4">Home run · Story</button></div><div class="wordLabel">✨ READ THIS ✨</div><div class="word" id="prompt" aria-live="polite"></div><div class="playArea"><p class="fieldHeading">⚾ LIVE BASEBALL DIAMOND <span>Tap a base!</span></p><svg id="gameDiamond" class="diamond" viewBox="0 0 340 235" role="img" aria-label="Baseball diamond with occupied bases highlighted"><path d="M170 215 L295 118 L170 21 L45 118 Z" fill="#4fae56" stroke="#277444" stroke-width="3"/><path d="M170 215 L273 118 L170 42 L67 118 Z" fill="#e4a85e"/><path d="M170 215 L255 118 L170 58 L85 118 Z" fill="#85c961"/><rect id="base2" class="base" x="157" y="33" width="26" height="26" rx="3" transform="rotate(45 170 46)"/><rect id="base1" class="base" x="260" y="105" width="26" height="26" rx="3" transform="rotate(45 273 118)"/><rect id="base3" class="base" x="54" y="105" width="26" height="26" rx="3" transform="rotate(45 67 118)"/><path d="M170 200 l15 15 -15 15 -15 -15z" fill="white" stroke="#34513c" stroke-width="3"/><g id="runners"></g><g fill="#284d32" font-size="13" font-weight="bold" text-anchor="middle"><text x="306" y="104">1st</text><text x="170" y="14">2nd</text><text x="32" y="104">3rd</text><text x="170" y="234">HOME</text></g></svg><div id="baseInfo" role="status" aria-live="polite">Tap a base to check who is there.</div><button id="hit" class="full" type="button">⚾ Read it! Hit the ball!</button><button id="soundToggle" type="button" class="secondary soundToggle" aria-pressed="true">🔊 Home run cheers: On</button><button id="testAnnouncer" type="button" class="secondary">🎙️ Test announcer</button><p class="muted" id="runningStatus" aria-live="polite" style="text-align:center;margin:5px 0">Watch the runners move after each hit!</p><div class="fieldControls"><div class="fieldTurnButtons"><button class="secondary" id="switch">Next batter →</button><button class="secondary" id="undo">↶ Undo last turn</button></div><div class="fieldOutButtons"><button class="secondary" id="out">Record out</button><span id="outs" class="pill"></span><button class="secondary" id="sides">Switch teams ↔</button></div></div></div><div class="row"><button class="secondary" id="help">Reading tip</button><button class="secondary" id="next">↻ New word</button></div><div id="hint" class="panel" hidden></div></section>
+</style></head><body><header><h1>⚾ Reading Home Run Derby</h1><p style="font-size:12px;opacity:.85">Version 4.2 — Stadium Celebration</p><p>Read it • Hit it • Run the bases!</p></header><main class="wrap">
+<section class="card scoreCard"><div class="row"><h2>Players & score</h2><span class="pill">Auto-saved on this device</span></div><p class="muted">Choose Family Practice for up to six readers, or Two-Team Competition for up to six readers on each team. You can switch modes in Parent settings.</p><div id="allstarScoreboard" class="allstarGrid" aria-live="polite"></div><div id="teamScores" class="teamScores"></div><div class="players" id="players"></div><details id="awardsPanel"><summary>🏆 Trophy case — view reading badges</summary><div id="awardList"></div></details><div id="playerLookup" class="lookup" role="status" aria-live="polite">Tap a player’s name to check their position.</div><p class="muted" id="inning"></p><div id="toast" class="toast" role="status"></div><div id="endPanel" hidden role="status"></div></section>
+<section class="card"><div class="row"><h2>At bat: <span id="batter"></span></h2><span class="pill" id="league"></span></div><p class="muted">Choose a baseball hit and read the challenge. Sounding out carefully or self-correcting counts!</p><div id="pauseBanner" hidden>⏸ Game paused — tap Resume Game to continue.</div><div class="choices" id="choices"><button data-hit="1">Single · Word</button><button data-hit="2">Double · Challenge</button><button data-hit="3">Triple · Sentence</button><button data-hit="4">Home run · Story</button></div><div class="wordLabel">✨ READ THIS ✨</div><div class="word" id="prompt" aria-live="polite"></div><div class="playArea"><p class="fieldHeading">⚾ LIVE BASEBALL DIAMOND <span>Tap a base!</span></p><svg id="gameDiamond" class="diamond" viewBox="0 0 340 235" role="img" aria-label="Baseball diamond with occupied bases highlighted"><path d="M170 215 L295 118 L170 21 L45 118 Z" fill="#4fae56" stroke="#277444" stroke-width="3"/><path d="M170 215 L273 118 L170 42 L67 118 Z" fill="#e4a85e"/><path d="M170 215 L255 118 L170 58 L85 118 Z" fill="#85c961"/><rect id="base2" class="base" x="157" y="33" width="26" height="26" rx="3" transform="rotate(45 170 46)"/><rect id="base1" class="base" x="260" y="105" width="26" height="26" rx="3" transform="rotate(45 273 118)"/><rect id="base3" class="base" x="54" y="105" width="26" height="26" rx="3" transform="rotate(45 67 118)"/><path d="M170 200 l15 15 -15 15 -15 -15z" fill="white" stroke="#34513c" stroke-width="3"/><g id="runners"></g><g fill="#284d32" font-size="13" font-weight="bold" text-anchor="middle"><text x="306" y="104">1st</text><text x="170" y="14">2nd</text><text x="32" y="104">3rd</text><text x="170" y="234">HOME</text></g></svg><div id="baseInfo" role="status" aria-live="polite">Tap a base to check who is there.</div><button id="hit" class="full" type="button">⚾ Read it! Hit the ball!</button><button id="soundToggle" type="button" class="secondary soundToggle" aria-pressed="true">🔊 Home run cheers: On</button><p class="muted" id="runningStatus" aria-live="polite" style="text-align:center;margin:5px 0">Watch the runners move after each hit!</p><div class="fieldControls"><div class="fieldTurnButtons"><button class="secondary" id="switch">Next batter →</button><button class="secondary" id="undo">↶ Undo last turn</button></div><div class="fieldOutButtons"><button class="secondary" id="out">Record out</button><span id="outs" class="pill"></span><button class="secondary" id="sides">Switch teams ↔</button></div></div></div><div class="row"><button class="secondary" id="help">Reading tip</button><button class="secondary" id="next">↻ New word</button></div><div id="hint" class="panel" hidden></div></section>
 <section class="card"><h2>Parent settings</h2><details id="settings"><summary>Game mode, players and reading leagues</summary><label for="gameMode">Choose game mode</label><select id="gameMode"><option value="practice">Single Team / Family Practice (1–6 players)</option><option value="competition">Two-Team Competition (1–6 per team)</option></select><p class="muted">Changing modes keeps player names and reading levels. Team 2 is hidden in Family Practice, not deleted.</p><p class="muted">Choose up to six players per team and their own reading leagues. Beginners remain available forever. This is a parent settings area, not a password-protected account.</p><label for="inningLimit">Game length</label><select id="inningLimit"><option value="0">Open-ended practice</option><option value="3">3 innings</option><option value="6">6 innings</option><option value="9">9 innings</option></select><p class="muted">In competition, both teams get their turn in each inning. Practice innings advance after three outs.</p><div class="row"><div class="field" style="flex:1;min-width:130px"><label for="teamName0">Team 1 name</label><input id="teamName0" maxlength="24"></div><div class="field" id="teamName1Field" style="flex:1;min-width:130px"><label for="teamName1">Team 2 name</label><input id="teamName1" maxlength="24"></div></div><div class="row"><div class="field" style="flex:1"><label for="count0">Team 1 players</label><select id="count0"></select></div><div class="field" id="count1Field" style="flex:1"><label for="count1">Team 2 players</label><select id="count1"></select></div></div><div id="editors" class="players" style="margin-top:12px"></div><p class="muted">Change a league anytime. Progress and scores stay with that player on this device.</p></details></section>
 <section class="card"><h2>Games, progress & backups</h2><div class="actions"><button class="secondary" id="pauseGame">⏸ Pause game</button><button class="secondary" id="endGame">🏆 End game</button><button class="secondary" id="new">New game</button><button class="secondary" id="save">Backup scores</button><button class="secondary" id="restore">Restore backup</button><button class="secondary" id="historyButton">Game history</button></div><input type="file" id="backupFile" accept="application/json,.json" hidden><p class="muted" id="summary"></p><div id="historyPanel" hidden class="panel"></div><details><summary>How to play and save the app</summary><p>In Family Practice, one group takes turns with up to six children. In Two-Team Competition, each team has its own batting order. After a hit, the next child on the same team bats. Switch teams manually or after three outs. Select a single, double, triple, or home run reading challenge. Let them sound out and reread carefully, then award the hit. Outs are optional baseball events, never penalties for slow reading. Three outs clear the bases and switch teams. The next teammate bats automatically after each hit, and the runners stay on base until the team switches sides.</p><p>Scores are stored on this device in this browser, not in a shared online account. Your friends' scores are separate from yours. Use Backup scores regularly, especially before updates. To add the app to an Android home screen, open the hosted GitHub Pages site in Chrome and select Add to Home screen or Install app.</p></details><button class="danger full" id="reset" style="margin-top:12px">Erase all local scores</button></section><footer>Optional teams • Up to 12 players • Six permanent reading leagues • Practice with confidence ⚾</footer></main>
 <script>
@@ -149,45 +149,47 @@ function renderSettings(){$('gameMode').value=s.mode;$('inningLimit').value=Stri
 function nextBatter(record=true){if(s.paused||s.finished)return;if(record)checkpoint();const t=s.activeTeam;s.batting[t]=(s.batting[t]+1)%s.counts[t];next();message('Next batter: '+s.names[current()]+' ('+s.teamNames[t]+').')}
 function switchTeams(record=true){if(s.paused||s.finished)return;if(s.mode!=='competition'){message('Switch to Two-Team Competition in Parent settings to switch teams.');return}if(record)checkpoint();const prev=s.activeTeam;s.activeTeam=1-prev;s.bases=[false,false,false];s.outs=0;if(prev===1)s.inning++;if(s.inningLimit&&s.inning>s.inningLimit){finishGame();return}next();message(s.teamNames[s.activeTeam]+' is now batting. '+s.names[current()]+' is up!')}
 function showBase(i){const r=s.bases[i];const who=r?(r.player>=0?s.names[r.player]:'Runner (name unavailable)'):'Nobody';$('baseInfo').textContent=['First','Second','Third'][i]+' base: '+who;}
-// Home-run-only celebration. Speech voices depend on device-installed TTS voices.
+// Two original synthesized arrangements of the public-domain baseball melody.
+// No device speech, downloads, or third-party recordings required.
 let cheersEnabled=true;
 let cheerAudio=null;
-let voiceTurn=0;
-function announceHomeRun(name){
- if(!cheersEnabled)return;
- if(!('speechSynthesis' in window)||!('SpeechSynthesisUtterance' in window)){message('Announcer voice is not available on this device.');return}
- try{
-  const synth=window.speechSynthesis;synth.cancel();
-  const voices=synth.getVoices().filter(v=>/^en([_-]|$)/i.test(v.lang||''));
-  // The Web Speech API does not provide reliable gender metadata. Use distinct voices when available.
-  const first=voices[0]||null,second=voices.find(v=>first&&v.voiceURI!==first.voiceURI)||first;
-  const chosen=(voiceTurn++%2===0?first:second);
-  const phrases=[`It's going, going, GONE! Home run for ${name}!`,`What a hit! ${name} sends it out of the park!`,`Listen to that crowd! ${name} hits a home run!`,`It's a big one! A home run for ${name}!`];
-  const utterance=new SpeechSynthesisUtterance(phrases[Math.floor(Math.random()*phrases.length)]);
-  if(chosen)utterance.voice=chosen;utterance.lang=chosen?.lang||'en-US';utterance.rate=1.15;utterance.pitch=voiceTurn%2===0?1.25:0.82;utterance.volume=1;
-  synth.speak(utterance);
- }catch(err){console.warn('Announcer unavailable',err)}
-}
-
-$('soundToggle').onclick=()=>{cheersEnabled=!cheersEnabled;if(!cheersEnabled&&'speechSynthesis'in window)window.speechSynthesis.cancel();$('soundToggle').textContent=cheersEnabled?'🔊 Home run cheers: On':'🔇 Home run cheers: Off';$('soundToggle').setAttribute('aria-pressed',String(cheersEnabled))};
-$('testAnnouncer').onclick=()=>{announceHomeRun(s.names[current()]);};
-function cheer(){
+let musicTurn=0;
+function playBallMusic(){
  if(!cheersEnabled)return;
  try{
   const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;
   const ctx=cheerAudio||(cheerAudio=new AC());
   if(ctx.state==='suspended')ctx.resume().catch(()=>{});
   const now=ctx.currentTime;
-  // Short stadium-style cheer: a soft crowd wash and a rising victory fanfare.
+  const carnival=(musicTurn++%2===1);
+  // Short familiar 'Take Me Out to the Ball Game' opening melody phrase.
+  const notes=[67,64,60,62,64,67,64,60,62,64,67,69,71,72];
+  const beats=[.22,.22,.22,.22,.40,.22,.22,.22,.22,.40,.22,.22,.22,.52];
+  let t=now+.06;
+  notes.forEach((m,i)=>{
+   const freq=440*Math.pow(2,(m-69)/12),dur=beats[i]*(carnival?.76:.92);
+   const osc=ctx.createOscillator(),gain=ctx.createGain();
+   osc.type=carnival?'square':'sine';osc.frequency.setValueAtTime(freq,t);
+   if(!carnival){const second=ctx.createOscillator();second.type='triangle';second.frequency.value=freq*2;const g2=ctx.createGain();g2.gain.value=.028;second.connect(g2);g2.connect(ctx.destination);second.start(t);second.stop(t+dur*.86)}
+   gain.gain.setValueAtTime(.001,t);gain.gain.linearRampToValueAtTime(carnival?.045:.09,t+.025);
+   gain.gain.setValueAtTime(carnival?.045:.09,t+dur*.65);gain.gain.exponentialRampToValueAtTime(.001,t+dur*.94);
+   osc.connect(gain);gain.connect(ctx.destination);osc.start(t);osc.stop(t+dur);
+   t+=dur;
+  });
+  // Stadium applause, present for both styles.
   const length=Math.floor(ctx.sampleRate*3),buffer=ctx.createBuffer(1,length,ctx.sampleRate),data=buffer.getChannelData(0);
-  for(let i=0;i<length;i++)data[i]=(Math.random()*2-1)*.18;
+  for(let i=0;i<length;i++)data[i]=(Math.random()*2-1)*.17;
   const noise=ctx.createBufferSource();noise.buffer=buffer;
-  const filter=ctx.createBiquadFilter();filter.type='bandpass';filter.frequency.value=750;filter.Q.value=.48;
-  const gain=ctx.createGain();gain.gain.setValueAtTime(.001,now);gain.gain.linearRampToValueAtTime(.15,now+.18);gain.gain.setValueAtTime(.15,now+2.35);gain.gain.exponentialRampToValueAtTime(.001,now+3);
+  const filter=ctx.createBiquadFilter();filter.type='bandpass';filter.frequency.value=1050;filter.Q.value=.55;
+  const gain=ctx.createGain();gain.gain.setValueAtTime(.001,now);gain.gain.linearRampToValueAtTime(.12,now+.12);gain.gain.setValueAtTime(.12,now+2.45);gain.gain.exponentialRampToValueAtTime(.001,now+3);
   noise.connect(filter);filter.connect(gain);gain.connect(ctx.destination);noise.start(now);noise.stop(now+3);
-
- }catch(e){console.warn('Cheer audio unavailable',e)}
+ }catch(e){console.warn('Celebration audio unavailable',e)}
 }
+$('soundToggle').onclick=()=>{cheersEnabled=!cheersEnabled;$('soundToggle').textContent=cheersEnabled?'🔊 Home run music: On':'🔇 Home run music: Off';$('soundToggle').setAttribute('aria-pressed',String(cheersEnabled))};
+$('soundToggle').textContent='🔊 Home run music: On';
+
+let badgeTimer;
+function showNewBadge(name,badges){const pop=$('badgePop');if(!pop)return;clearTimeout(badgeTimer);pop.replaceChildren();const big=document.createElement('div');big.textContent='🏆✨ NEW BADGE! ✨🏆';const who=document.createElement('div');who.textContent=name;const earned=document.createElement('div');earned.textContent=badges.join(' • ');earned.style.fontSize='1rem';pop.append(big,who,earned);pop.hidden=false;badgeTimer=setTimeout(()=>{pop.hidden=true},2600)}
 function celebrateHomeRun(){
  const layer=$('celebrate');if(!layer)return;
  layer.replaceChildren();
@@ -222,13 +224,13 @@ function animateRun(before,batter,n){
  });
 }
 async function advance(n){if(running||s.paused||s.finished)return;running=true;const hitButton=$('hit');hitButton.disabled=true;try{
- checkpoint();n=[1,2,3,4].includes(Number(n))?Number(n):1;const batter=current();const before=[...s.bases];let b=[...before],score=0;if(n===4){cheer();announceHomeRun(s.names[batter]);}
+ checkpoint();n=[1,2,3,4].includes(Number(n))?Number(n):1;const batter=current();const before=[...s.bases];let b=[...before],score=0;if(n===4){playBallMusic();}
  for(let i=2;i>=0;i--)if(b[i]){const runner=b[i];b[i]=false;if(i+n>=3){score++;if(runner.player>=0&&runner.player<12)s.runs[runner.player]++}else b[i+n]=runner}
  if(n===4){score++;s.runs[batter]++}else b[n-1]={player:batter};
  $('runningStatus').textContent=s.names[batter]+' is running the bases!';
  try{await animateRun(before,batter,n)}catch(animationError){console.warn('Runner animation unavailable:',animationError);$('runningStatus').textContent='Hit recorded!'}
- s.bases=b;s.teamScores[s.activeTeam]+=score;s.hits[batter]++;s.mastery[batter]++;s.careerHits[batter]++;s.careerMastery[batter]++;if(n===4)s.careerHomers[batter]++;
- const name=s.names[batter];s.batting[s.activeTeam]=(s.batting[s.activeTeam]+1)%s.counts[s.activeTeam];next();if(n===4)celebrateHomeRun();
+ const badgesBefore=badgeFor(batter);s.bases=b;s.teamScores[s.activeTeam]+=score;s.hits[batter]++;s.mastery[batter]++;s.careerHits[batter]++;s.careerMastery[batter]++;if(n===4)s.careerHomers[batter]++;const freshBadges=badgeFor(batter).filter(b=>!badgesBefore.includes(b));
+ const name=s.names[batter];s.batting[s.activeTeam]=(s.batting[s.activeTeam]+1)%s.counts[s.activeTeam];next();if(n===4)celebrateHomeRun();if(freshBadges.length)showNewBadge(name,freshBadges);
  $('runningStatus').textContent=name+(score?' scored '+score+' run(s)!':' reached base!')+' Next: '+s.names[current()];
  message(name+' earned a '+['','single','double','triple','HOME RUN'][n]+(score?' · '+score+' run(s)!':'')+' Next: '+s.names[current()]+'.');
  }catch(e){showError(e)}finally{running=false;hitButton.disabled=false;render()}}
@@ -244,4 +246,4 @@ $('restore').onclick=()=>$('backupFile').click();$('backupFile').onchange=async 
 $('historyButton').onclick=()=>{const p=$('historyPanel');p.hidden=!p.hidden;if(!p.hidden){p.replaceChildren();if(!s.history.length)p.textContent='No completed games yet.';else for(const h of [...s.history].reverse().slice(0,20)){const row=document.createElement('p');row.textContent=(h.date||'Past game')+' — '+(h.summary||'Saved game');p.append(row)}}};
 $('reset').onclick=()=>{if(confirm('Erase ALL saved players, scores, and history on this device? This cannot be undone.')){s=defaults();renderSettings();next();message('All local data reset.')}};
 renderSettings();if(!s.prompt)pick();render();if('serviceWorker'in navigator&&location.protocol.startsWith('http'))navigator.serviceWorker.register('./sw.js').catch(()=>{});
-</script><div id="celebrate" aria-hidden="true"></div></body></html>
+</script><div id="celebrate" aria-hidden="true"></div><div id="badgePop" hidden role="status" aria-live="polite"></div></body></html>
