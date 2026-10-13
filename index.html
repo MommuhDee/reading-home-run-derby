@@ -13,7 +13,7 @@
 #baseInfo{margin:8px auto;text-align:center;max-width:340px;background:#e7f5ff;border:2px solid #9bd0f6;border-radius:12px;padding:9px;font-weight:750;color:#174b6b}
 #celebrate{position:fixed;inset:0;pointer-events:none;z-index:999;overflow:hidden}
 .soundToggle{display:block;margin:5px auto 0;padding:5px 10px;min-height:34px;font-size:.78rem;border:1px solid #9bb9cf;background:#edf7ff!important;color:#164579!important}
-.firework{position:absolute;width:7px;height:7px;border-radius:50%;background:var(--c);box-shadow:0 0 8px 3px var(--c);animation:burst .85s ease-out both;left:var(--x);top:var(--y)}
+.firework{position:absolute;width:7px;height:7px;border-radius:50%;background:var(--c);box-shadow:0 0 8px 3px var(--c);animation:burst .9s ease-out both;left:var(--x);top:var(--y)}
 @keyframes burst{0%{opacity:0;transform:translate(0,0) scale(.2)}15%{opacity:1}100%{opacity:0;transform:translate(var(--dx),var(--dy)) scale(.6)}}
 .spark{position:absolute;top:-12%;font-size:24px;animation:fall 1.6s ease-in forwards;opacity:0}
 @keyframes fall{0%{transform:translateY(-5vh) rotate(0deg) scale(.5);opacity:0}12%{opacity:1}80%{opacity:1}100%{transform:translateY(110vh) rotate(700deg) scale(1);opacity:0}}
@@ -79,7 +79,7 @@ header p{color:#fff6d5!important;font-weight:700}
 #teamScores .teamScore{border-color:#9ed6f5;background:#f1faff}
 #teamScores .teamScore.batting{background:#fff4cb;border-color:#ffb83e}
 @media(max-width:390px){.playArea .diamond{max-height:205px}.fieldTurnButtons button{font-size:.78rem}}
-</style></head><body><header><h1>⚾ Reading Home Run Derby</h1><p style="font-size:12px;opacity:.85">Version 3.9 — Home Run Celebration</p><p>Read it • Hit it • Run the bases!</p></header><main class="wrap">
+</style></head><body><header><h1>⚾ Reading Home Run Derby</h1><p style="font-size:12px;opacity:.85">Version 4.0 — Three-Second Home Run Celebration</p><p>Read it • Hit it • Run the bases!</p></header><main class="wrap">
 <section class="card scoreCard"><div class="row"><h2>Players & score</h2><span class="pill">Auto-saved on this device</span></div><p class="muted">Choose Family Practice for up to six readers, or Two-Team Competition for up to six readers on each team. You can switch modes in Parent settings.</p><div id="teamScores" class="teamScores"></div><div class="players" id="players"></div><div id="playerLookup" class="lookup" role="status" aria-live="polite">Tap a player’s name to check their position.</div><p class="muted" id="inning"></p><div id="toast" class="toast" role="status"></div></section>
 <section class="card"><div class="row"><h2>At bat: <span id="batter"></span></h2><span class="pill" id="league"></span></div><p class="muted">Choose a baseball hit and read the challenge. Sounding out carefully or self-correcting counts!</p><div class="choices" id="choices"><button data-hit="1">Single · Word</button><button data-hit="2">Double · Challenge</button><button data-hit="3">Triple · Sentence</button><button data-hit="4">Home run · Story</button></div><div class="wordLabel">✨ READ THIS ✨</div><div class="word" id="prompt" aria-live="polite"></div><div class="playArea"><p class="fieldHeading">⚾ LIVE BASEBALL DIAMOND <span>Tap a base!</span></p><svg id="gameDiamond" class="diamond" viewBox="0 0 340 235" role="img" aria-label="Baseball diamond with occupied bases highlighted"><path d="M170 215 L295 118 L170 21 L45 118 Z" fill="#4fae56" stroke="#277444" stroke-width="3"/><path d="M170 215 L273 118 L170 42 L67 118 Z" fill="#e4a85e"/><path d="M170 215 L255 118 L170 58 L85 118 Z" fill="#85c961"/><rect id="base2" class="base" x="157" y="33" width="26" height="26" rx="3" transform="rotate(45 170 46)"/><rect id="base1" class="base" x="260" y="105" width="26" height="26" rx="3" transform="rotate(45 273 118)"/><rect id="base3" class="base" x="54" y="105" width="26" height="26" rx="3" transform="rotate(45 67 118)"/><path d="M170 200 l15 15 -15 15 -15 -15z" fill="white" stroke="#34513c" stroke-width="3"/><g id="runners"></g><g fill="#284d32" font-size="13" font-weight="bold" text-anchor="middle"><text x="306" y="104">1st</text><text x="170" y="14">2nd</text><text x="32" y="104">3rd</text><text x="170" y="234">HOME</text></g></svg><div id="baseInfo" role="status" aria-live="polite">Tap a base to check who is there.</div><button id="hit" class="full" type="button">⚾ Read it! Hit the ball!</button><button id="soundToggle" type="button" class="secondary soundToggle" aria-pressed="true">🔊 Home run cheers: On</button><p class="muted" id="runningStatus" aria-live="polite" style="text-align:center;margin:5px 0">Watch the runners move after each hit!</p><div class="fieldControls"><div class="fieldTurnButtons"><button class="secondary" id="switch">Next batter →</button><button class="secondary" id="undo">↶ Undo last turn</button></div><div class="fieldOutButtons"><button class="secondary" id="out">Record out</button><span id="outs" class="pill"></span><button class="secondary" id="sides">Switch teams ↔</button></div></div></div><div class="row"><button class="secondary" id="help">Reading tip</button><button class="secondary" id="next">↻ New word</button></div><div id="hint" class="panel" hidden></div></section>
 <section class="card"><h2>Parent settings</h2><details id="settings"><summary>Game mode, players and reading leagues</summary><label for="gameMode">Choose game mode</label><select id="gameMode"><option value="practice">Single Team / Family Practice (1–6 players)</option><option value="competition">Two-Team Competition (1–6 per team)</option></select><p class="muted">Changing modes keeps player names and reading levels. Team 2 is hidden in Family Practice, not deleted.</p><p class="muted">Choose up to six players per team and their own reading leagues. Beginners remain available forever. This is a parent settings area, not a password-protected account.</p><div class="row"><div class="field" style="flex:1;min-width:130px"><label for="teamName0">Team 1 name</label><input id="teamName0" maxlength="24"></div><div class="field" id="teamName1Field" style="flex:1;min-width:130px"><label for="teamName1">Team 2 name</label><input id="teamName1" maxlength="24"></div></div><div class="row"><div class="field" style="flex:1"><label for="count0">Team 1 players</label><select id="count0"></select></div><div class="field" id="count1Field" style="flex:1"><label for="count1">Team 2 players</label><select id="count1"></select></div></div><div id="editors" class="players" style="margin-top:12px"></div><p class="muted">Change a league anytime. Progress and scores stay with that player on this device.</p></details></section>
@@ -134,16 +134,16 @@ function cheer(){
   if(ctx.state==='suspended')ctx.resume().catch(()=>{});
   const now=ctx.currentTime;
   // Short stadium-style cheer: a soft crowd wash and a rising victory fanfare.
-  const length=Math.floor(ctx.sampleRate*1.8),buffer=ctx.createBuffer(1,length,ctx.sampleRate),data=buffer.getChannelData(0);
+  const length=Math.floor(ctx.sampleRate*3),buffer=ctx.createBuffer(1,length,ctx.sampleRate),data=buffer.getChannelData(0);
   for(let i=0;i<length;i++)data[i]=(Math.random()*2-1)*.18;
   const noise=ctx.createBufferSource();noise.buffer=buffer;
   const filter=ctx.createBiquadFilter();filter.type='bandpass';filter.frequency.value=750;filter.Q.value=.48;
-  const gain=ctx.createGain();gain.gain.setValueAtTime(.001,now);gain.gain.linearRampToValueAtTime(.15,now+.18);gain.gain.setValueAtTime(.15,now+1.1);gain.gain.exponentialRampToValueAtTime(.001,now+1.8);
-  noise.connect(filter);filter.connect(gain);gain.connect(ctx.destination);noise.start(now);noise.stop(now+1.8);
+  const gain=ctx.createGain();gain.gain.setValueAtTime(.001,now);gain.gain.linearRampToValueAtTime(.15,now+.18);gain.gain.setValueAtTime(.15,now+2.35);gain.gain.exponentialRampToValueAtTime(.001,now+3);
+  noise.connect(filter);filter.connect(gain);gain.connect(ctx.destination);noise.start(now);noise.stop(now+3);
   [523.25,659.25,783.99,1046.5].forEach((freq,i)=>{
-   const osc=ctx.createOscillator(),vol=ctx.createGain(),at=now+.10+i*.17;
-   osc.type='triangle';osc.frequency.value=freq;vol.gain.setValueAtTime(.001,at);vol.gain.linearRampToValueAtTime(.09,at+.04);vol.gain.exponentialRampToValueAtTime(.001,at+.45);
-   osc.connect(vol);vol.connect(ctx.destination);osc.start(at);osc.stop(at+.46);
+   const osc=ctx.createOscillator(),vol=ctx.createGain(),at=now+.15+i*.66;
+   osc.type='triangle';osc.frequency.value=freq;vol.gain.setValueAtTime(.001,at);vol.gain.linearRampToValueAtTime(.09,at+.04);vol.gain.exponentialRampToValueAtTime(.001,at+.55);
+   osc.connect(vol);vol.connect(ctx.destination);osc.start(at);osc.stop(at+.56);
   });
  }catch(e){console.warn('Cheer audio unavailable',e)}
 }
@@ -152,15 +152,15 @@ function celebrateHomeRun(){
  layer.replaceChildren();
  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
  const colors=['#ffca28','#fa448c','#32c8ff','#8c52ff','#39e67d','#ff6936'];
- for(let burst=0;burst<5;burst++){
+ for(let burst=0;burst<8;burst++){
   const x=14+Math.random()*72,y=12+Math.random()*42;
   for(let i=0;i<16;i++){
    const a=i*Math.PI/8,dist=42+Math.random()*66,el=document.createElement('span');el.className='firework';
-   el.style.setProperty('--x',x+'%');el.style.setProperty('--y',y+'%');el.style.setProperty('--dx',Math.cos(a)*dist+'px');el.style.setProperty('--dy',Math.sin(a)*dist+'px');el.style.setProperty('--c',colors[(i+burst)%colors.length]);el.style.animationDelay=(burst*.22)+'s';layer.append(el)
+   el.style.setProperty('--x',x+'%');el.style.setProperty('--y',y+'%');el.style.setProperty('--dx',Math.cos(a)*dist+'px');el.style.setProperty('--dy',Math.sin(a)*dist+'px');el.style.setProperty('--c',colors[(i+burst)%colors.length]);el.style.animationDelay=(burst*.28)+'s';layer.append(el)
   }
  }
- for(let j=0;j<20;j++){const el=document.createElement('span');el.className='spark';el.textContent=['🎉','✨','⭐','⚾'][j%4];el.style.left=(Math.random()*96)+'%';el.style.animationDelay=(Math.random()*.5)+'s';layer.append(el)}
- setTimeout(()=>layer.replaceChildren(),2600)
+ for(let j=0;j<28;j++){const el=document.createElement('span');el.className='spark';el.textContent=['🎉','✨','⭐','⚾'][j%4];el.style.left=(Math.random()*96)+'%';el.style.animationDelay=(Math.random()*1.35)+'s';layer.append(el)}
+ setTimeout(()=>layer.replaceChildren(),3000)
 }
 for(let i=1;i<=3;i++){const b=$('base'+i);b.setAttribute('tabindex','0');b.setAttribute('role','button');b.setAttribute('aria-label','Check '+['first','second','third'][i-1]+' base');b.addEventListener('click',()=>showBase(i-1));b.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();showBase(i-1)}})}
 let running=false;
